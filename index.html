@@ -58,7 +58,7 @@
                     <button onclick="showOTPModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md text-sm font-medium">Login/Register with OTP</button>
                 </div>
                 <div class="-mr-2 flex items-center sm:hidden">
-                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" onclick="toggleMobileMenu()">
                         <span class="sr-only">Open main menu</span>
                         <i class="fas fa-bars"></i>
                     </button>
@@ -81,7 +81,7 @@
                     </p>
                     <div class="mt-8 sm:max-w-lg sm:mx-auto sm:text-center lg:text-left lg:mx-0">
                         <div class="mt-4 sm:mt-0">
-                            <button class="w-full px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">Create Free Profile</button>
+                            <button id="createProfileBtn" class="w-full px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">Create Free Profile</button>
                         </div>
                         <p class="mt-3 text-sm text-gray-500">
                             Already registered? <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Login here </a>
@@ -115,7 +115,7 @@
                     <button class="py-2 px-4 font-medium text-gray-500 border-b-2 border-transparent hover:text-indigo-600 hover:border-indigo-500">Bride</button>
                     <button class="py-2 px-4 font-medium text-indigo-600 border-b-2 border-indigo-500">Groom</button>
                 </div>
-                <form class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-6">
+                <form id="searchForm" class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-6 sm:gap-x-6" onsubmit="searchMatches(event)">
                     <div class="sm:col-span-2">
                         <label for="religion" class="block text-sm font-medium text-gray-700">Religion</label>
                         <select id="religion" name="religion" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
@@ -360,7 +360,7 @@
                 </p>
             </div>
             
-            <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div id="successStories" class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 <div class="overflow-hidden rounded-lg shadow-lg">
                     <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3ec01443-9d28-4fd4-a06f-2f77353b3c70.png" alt="North Indian couple - Rajesh in embroidered sherwani holding hands with Priya in red bridal lehenga with golden jewelry" class="w-full h-48 object-cover">
                     <div class="px-6 py-4">
@@ -409,7 +409,7 @@
                     Get to know potential matches better through personalized video introductions
                 </p>
             </div>
-            <div class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <div id="videoProfiles" class="mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg">
                     <div class="aspect-w-16 aspect-h-9">
                         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6fa1378d-4651-4fc4-a6b1-c84ce4443590.png" alt="Bride video profile" class="w-full h-full object-cover">
@@ -896,97 +896,6 @@
         </div>
     </div>
 
-    <script>
-        // Mobile menu toggle functionality
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-        
-        function closeMobileMenu() {
-            document.getElementById('mobile-menu').classList.add('hidden');
-        }
-        
-        // Sample dynamic functionality - this would be replaced with your actual API calls
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Kalyana Vaibhogam website loaded');
-            
-            // Registration form validation example
-            const registrationForm = document.createElement('form');
-            registrationForm.id = 'registration-form';
-            registrationForm.innerHTML = `
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
-                        Full Name
-                    </label>
-                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Enter your full name" required>
-                </div>
-                <!-- More form fields would go here -->
-            `;
-            
-            // Featured profiles carousel would go here
-            // Sample code for rotating featured profiles
-            
-            // Membership plan selection
-            document.querySelectorAll('.membership-plan button').forEach(button => {
-                button.addEventListener('click', function() {
-                    alert('Membership plan selected. This would connect to payment processing.');
-                });
-            });
-            
-            // Mobile app download buttons
-            document.querySelectorAll('.app-download').forEach(button => {
-                button.addEventListener('click', function() {
-                    // Analytics tracking and app store redirects would go here
-                    console.log('App download initiated');
-                });
-            });
-        });
-
-        // OTP functionality
-        function showOTPModal() {
-            document.getElementById('otpModal').classList.remove('hidden');
-        }
-        
-        function hideOTPModal() {
-            document.getElementById('otpModal').classList.add('hidden');
-        }
-        
-        function sendOTP() {
-            const mobileNumber = document.getElementById('mobileNumber').value;
-            if (!mobileNumber || !/^\d{10}$/.test(mobileNumber)) {
-                alert('Please enter a valid 10 digit mobile number');
-                return;
-            }
-            
-            // Here you would call your backend API to send OTP
-            console.log('Sending OTP to:', mobileNumber);
-            
-            // Show OTP field and verify button
-            document.getElementById('otpField').classList.remove('hidden');
-            document.getElementById('verifyOTPBtn').classList.remove('hidden');
-            document.getElementById('sendOTPBtn').classList.add('hidden');
-            
-            // In a real implementation, you would implement this via AJAX
-            alert('OTP has been sent to ' + mobileNumber);
-        }
-        
-        function verifyOTP() {
-            const otp = document.getElementById('otpInput').value;
-            if (!otp || !/^\d{6}$/.test(otp)) {
-                alert('Please enter the 6 digit OTP');
-                return;
-            }
-            
-            // Here you would call your backend API to verify OTP
-            console.log('Verifying OTP:', otp);
-            
-            // On successful verification
-            alert('OTP verified successfully! Logging you in...');
-            hideOTPModal();
-            // Redirect or perform login actions here
-        }
-    </script>
-
     <!-- OTP Modal -->
     <div id="otpModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
         <div class="bg-white rounded-lg p-6 max-w-sm w-full">
@@ -1001,6 +910,7 @@
                     <label class="block text-sm font-medium text-gray-700">Mobile Number</label>
                     <input type="tel" id="mobileNumber" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter 10 digit mobile number" pattern="[0-9]{10}" required>
                 </div>
+                <div id="recaptcha-container"></div> <!-- reCAPTCHA container -->
                 <div id="otpField" class="hidden">
                     <label class="block text-sm font-medium text-gray-700">OTP</label>
                     <input type="text" id="otpInput" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Enter 6 digit OTP" pattern="[0-9]{6}">
@@ -1013,5 +923,358 @@
         </div>
     </div>
 
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
+<script>
+  // Your Firebase config from Step 2
+  const firebaseConfig = {
+    apiKey: "AIzaSyDAm-ZDArqAZ-jnzIZxvSYkr8TM5EE1CQs",
+    authDomain: "kalyana-vaibhogam.firebaseapp.com",
+    projectId: "kalyana-vaibhogam",
+    storageBucket: "kalyana-vaibhogam.appspot.com",
+    messagingSenderId: "821056424803",
+    appId: "1:821056424803:web:9b76ed6beac579d85c6156"
+  };
+
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  // Track auth state changes
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      console.log('User is signed in:', user);
+      // Update UI for logged in state
+      document.querySelector('.login-btn').textContent = 'My Account';
+    } else {
+      console.log('User is signed out');
+      // Update UI for logged out state
+    }
+  });
+
+  // Initialize reCAPTCHA verifier globally
+  window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+    'size': 'invisible',
+    'callback': () => console.log('reCAPTCHA solved'),
+    'expired-callback': () => console.log('reCAPTCHA expired')
+  });
+
+  // Mobile menu functionality
+  const mobileMenu = {
+    isOpen: false,
+    
+    toggle() {
+      this.isOpen = !this.isOpen;
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+      
+      // Prevent scrolling when open
+      document.body.style.overflow = this.isOpen ? 'hidden' : '';
+    },
+    
+    close() {
+      this.isOpen = false;
+      document.getElementById('mobile-menu').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  };
+  
+  // Backend API calls
+  document.addEventListener('DOMContentLoaded', function() {
+      // Load success stories
+      fetch('/api/success_stories')
+        .then(res => res.json())
+        .then(stories => {
+          const container = document.getElementById('successStories');
+          container.innerHTML = stories.map(story => `
+            <div class="overflow-hidden rounded-lg shadow-lg">
+              <img src="${story.image}" alt="${story.altText}" class="w-full h-48 object-cover">
+              <div class="px-6 py-4">
+                <h3 class="text-lg font-medium text-gray-900">${story.coupleNames}</h3>
+                <p class="mt-1 text-sm text-gray-500">Married ${story.marriedDate}</p>
+                <p class="mt-2 text-gray-600">"${story.testimonial}"</p>
+              </div>
+            </div>
+          `).join('');
+        });
+
+      // Load video profiles
+      fetch('/api/video_profiles')
+        .then(res => res.json())
+        .then(profiles => {
+          const container = document.getElementById('videoProfiles');
+          container.innerHTML = profiles.map(profile => `
+            <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+              <div class="aspect-w-16 aspect-h-9">
+                <img src="${profile.thumbnail}" alt="${profile.name} video profile" class="w-full h-full object-cover">
+              </div>
+              <div class="px-6 py-4">
+                <div class="flex items-center">
+                  <img class="h-10 w-10 rounded-full mr-3" src="${profile.avatar}" alt="Profile photo">
+                  <div>
+                    <h3 class="text-lg font-medium text-gray-900">${profile.name}, ${profile.age}</h3>
+                    <p class="text-sm text-gray-500">${profile.location}</p>
+                  </div>
+                </div>
+                <button class="mt-4 w-full bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700" 
+                        onclick="playVideo('${profile.videoId}')">
+                  Play Introduction
+                </button>
+              </div>
+            </div>
+          `).join('');
+        });
+
+      // Handle form submission
+      window.searchMatches = async function(e) {
+        e.preventDefault();
+        const formData = new FormData(document.getElementById('searchForm'));
+        const params = new URLSearchParams(formData);
+        
+        try {
+          const response = await fetch(`/api/search?${params}`);
+          const results = await response.json();
+          // Render search results
+          console.log(results);
+          // Redirect to results page or display in modal
+        } catch (error) {
+          console.error('Search error:', error);
+          showToast('Search failed. Please try again.', true);
+        }
+      };
+
+      // Handle profile creation
+      document.getElementById('createProfileBtn').addEventListener('click', () => {
+        if (auth.currentUser) {
+          window.location.href = '/profile/create';
+        } else {
+          showOTPModal();
+        }
+      });
+      console.log('Kalyana Vaibhogam website loaded');
+      
+      // Initialize reCAPTCHA Verifier when the page loads
+      // This ensures the reCAPTCHA widget is ready when the OTP modal is shown
+      window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+          'size': 'invisible', // You can change this to 'normal' for a visible reCAPTCHA
+          'callback': (response) => {
+              // reCAPTCHA solved, allow signInWithPhoneNumber.
+              // This callback is usually not needed for 'invisible' size
+          },
+          'expired-callback': () => {
+              // Response expired. Ask user to solve reCAPTCHA again.
+              alert('reCAPTCHA expired. Please try again.');
+              sendOTPBtn.disabled = false;
+          }
+      });
+      recaptchaVerifier.render().then(function(widgetId) {
+          // The reCAPTCHA widget has been rendered.
+          // You can store the widgetId if you need to reset it later.
+      });
+
+      // Registration form validation example (original placeholder)
+      const registrationForm = document.createElement('form');
+      registrationForm.id = 'registration-form';
+      registrationForm.innerHTML = `
+          <div class="mb-4">
+              <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                  Full Name
+              </label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Enter your full name" required>
+          </div>
+          <!-- More form fields would go here -->
+      `;
+      
+      // Membership plan selection (original placeholder)
+      document.querySelectorAll('.membership-plan button').forEach(button => {
+          button.addEventListener('click', function() {
+              // alert('Membership plan selected. This would connect to payment processing.');
+          });
+      });
+      
+      // Mobile app download buttons (original placeholder)
+      document.querySelectorAll('.app-download').forEach(button => {
+          button.addEventListener('click', function() {
+              // Analytics tracking and app store redirects would go here
+              console.log('App download initiated');
+          });
+      });
+  });
+
+  // Video player function
+  window.playVideo = function(videoId) {
+    // Open video modal or redirect to video page
+    console.log('Playing video:', videoId);
+  };
+
+  // Toast notification function
+  function showToast(message, isError = false) {
+    const toast = document.createElement('div');
+    toast.className = `fixed bottom-4 right-4 px-4 py-2 rounded shadow-lg ${
+      isError ? 'bg-red-500' : 'bg-green-500'
+    } text-white`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  // Toast notification function
+  function showToast(message, isError = false) {
+    const toast = document.createElement('div');
+    toast.className = `fixed bottom-4 right-4 px-4 py-2 rounded shadow-lg ${
+      isError ? 'bg-red-500' : 'bg-green-500'
+    } text-white`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  // Toast notification function
+  function showToast(message, isError = false) {
+    const toast = document.createElement('div');
+    toast.className = `fixed bottom-4 right-4 px-4 py-2 rounded shadow-lg ${
+      isError ? 'bg-red-500' : 'bg-green-500'
+    } text-white`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  // Toast notification function
+  function showToast(message, isError = false) {
+    const toast = document.createElement('div');
+    toast.className = `fixed bottom-4 right-4 px-4 py-2 rounded shadow-lg ${
+      isError ? 'bg-red-500' : 'bg-green-500'
+    } text-white`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  // OTP functionality
+  function showOTPModal() {
+      document.getElementById('otpModal').classList.remove('hidden');
+      // Reset modal state
+      document.getElementById('mobileNumber').value = '';
+      document.getElementById('otpInput').value = '';
+      document.getElementById('otpField').classList.add('hidden');
+      document.getElementById('verifyOTPBtn').classList.add('hidden');
+      document.getElementById('sendOTPBtn').classList.remove('hidden');
+      // If reCAPTCHA is visible, reset it
+      if (window.recaptchaVerifier && window.recaptchaVerifier.reset) {
+          window.recaptchaVerifier.reset();
+      }
+  }
+  
+  function hideOTPModal() {
+      document.getElementById('otpModal').classList.add('hidden');
+  }
+  
+  async function sendOTP() {
+      const mobileNumberInput = document.getElementById('mobileNumber');
+      const mobileNumber = mobileNumberInput.value;
+      const sendOTPBtn = document.getElementById('sendOTPBtn');
+
+      if (!mobileNumber || !/^\d{10}$/.test(mobileNumber)) {
+          alert('Please enter a valid 10 digit mobile number.');
+          return;
+      }
+
+      // Disable button to prevent multiple clicks
+      sendOTPBtn.disabled = true;
+      sendOTPBtn.textContent = 'Sending...';
+
+      const phoneNumber = '+91' + mobileNumber; // Assuming Indian numbers, add country code
+
+      try {
+          window.confirmationResult = await auth.signInWithPhoneNumber(phoneNumber, window.recaptchaVerifier);
+          
+          // Update UI
+          document.getElementById('otpField').classList.remove('hidden');
+          document.getElementById('verifyOTPBtn').classList.remove('hidden');
+          sendOTPBtn.classList.add('hidden'); 
+          sendOTPBtn.disabled = false;
+          
+          // Show success toast instead of alert
+          showToast('OTP has been sent to ' + mobileNumber);
+          
+      } catch (error) {
+          console.error("Error sending OTP:", error);
+          sendOTPBtn.disabled = false;
+          sendOTPBtn.textContent = 'Send OTP';
+          
+          // Show error toast
+          showToast('Failed to send OTP: ' + error.message, true);
+          
+          if (window.recaptchaVerifier?.reset) {
+              window.recaptchaVerifier.reset();
+          }
+      }
+  }
+  
+  async function verifyOTP() {
+      const otpInput = document.getElementById('otpInput');
+      const otp = otpInput.value;
+      const verifyOTPBtn = document.getElementById('verifyOTPBtn');
+
+      if (!otp || !/^\d{6}$/.test(otp)) {
+          alert('Please enter the 6 digit OTP.');
+          return;
+      }
+
+      if (!window.confirmationResult) {
+          alert('Please send OTP first.');
+          return;
+      }
+
+      // Disable button to prevent multiple clicks
+      verifyOTPBtn.disabled = true;
+      verifyOTPBtn.textContent = 'Verifying...';
+
+      try {
+          const userCredential = await window.confirmationResult.confirm(otp);
+          const user = userCredential.user;
+          console.log('User signed in successfully:', user);
+          // Save minimal user data to Firestore
+          await db.collection('users').doc(user.uid).set({
+            phoneNumber: user.phoneNumber,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+            profileComplete: false
+          }, { merge: true });
+
+          hideOTPModal();
+          showToast('Login successful!');
+          window.location.href = '/dashboard.html';
+      } catch (error) {
+          console.error("Error verifying OTP:", error);
+          alert('Failed to verify OTP: ' + error.message);
+          verifyOTPBtn.disabled = false;
+          verifyOTPBtn.textContent = 'Verify OTP';
+      }
+  }
+</script>
+  
 </body>
 </html>
